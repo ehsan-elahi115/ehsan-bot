@@ -1,0 +1,151 @@
+<aiml>
+
+<!-- Categories -->
+
+<category>
+  <pattern>HELLO</pattern>
+  <template>
+    <random>
+      <li>Hi there!</li>
+      <li>Hello, how can I assist you?</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>WHAT IS YOUR NAME</pattern>
+  <template>
+    My name is Chatbot. How can I help you today?
+  </template>
+</category>
+
+<category>
+  <pattern>TELL ME A JOKE</pattern>
+  <template>
+    <random>
+      <li>Why don't scientists trust atoms?</li>
+      <li>Why did the chicken go to the seance?</li>
+      <li>Why don't skeletons fight each other?</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>WHAT IS THE WEATHER LIKE IN *</pattern>
+  <template>
+    <random>
+      <li>The weather in <star index="1"/> is sunny and warm.</li>
+      <li>Expect rain in <star index="1"/> today.</li>
+      <li>It's going to be a cloudy day in <star index="1"/>.</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>TELL ME ABOUT *</pattern>
+  <template>
+    <condition name="topic">
+      <li value="technology">Technology is rapidly advancing and changing the way we live.</li>
+      <li value="history">History is the study of past events.</li>
+      <li>Sorry, I don't have information on that topic.</li>
+    </condition>
+  </template>
+</category>
+
+<category>
+  <pattern>BYE</pattern>
+  <template>
+    Goodbye! Have a great day!
+  </template>
+</category>
+
+<!-- Substitutions -->
+
+<substitution>
+  <person2>
+    <gender>female</gender>
+    <random>
+      <li>Sarah</li>
+      <li>Emma</li>
+    </random>
+  </person2>
+  <person2>
+    <gender>male</gender>
+    <random>
+      <li>John</li>
+      <li>David</li>
+    </random>
+  </person2>
+</substitution>
+
+<!-- That and Topic Star -->
+
+<category>
+  <pattern>DO YOU LIKE *</pattern>
+  <template>
+    <think>
+      <set name="topic"><star/></set>
+    </think>
+    <random>
+      <li>Yes, I like <star/>.</li>
+      <li>No, I'm not a fan of <star/>.</li>
+    </random>
+  </template>
+</category>
+
+<category>
+  <pattern>DO YOU KNOW *</pattern>
+  <template>
+    <random>
+      <li>Yes, I know about <star/>.</li>
+      <li>No, I'm not familiar with <star/>.</li>
+    </random>
+  </template>
+</category>
+
+<!-- System and Learn -->
+
+<category>
+  <pattern>SAVE *</pattern>
+  <template>
+    <learn>
+      <category>
+        <pattern><star/></pattern>
+        <template><srai>NEW INFO</srai></template>
+      </category>
+    </learn>
+    Okay, I'll remember that for next time.
+  </template>
+</category>
+
+<category>
+  <pattern>NEW INFO</pattern>
+  <template>
+    <random>
+      <li>Thanks for sharing!</li>
+      <li>That's interesting.</li>
+    </random>
+  </template>
+</category>
+
+<!-- Srai and Condition -->
+
+<category>
+  <pattern>WHAT IS THE TIME</pattern>
+  <template>
+    The current time is <srai>TIME</srai>.
+  </template>
+</category>
+
+<category>
+  <pattern>TIME</pattern>
+  <template>
+    <condition name="hour">
+      <li value="12">noon</li>
+      <li value="0">midnight</li>
+      <li>the evening</li>
+    </condition>
+  </template>
+</category>
+
+</aiml>
